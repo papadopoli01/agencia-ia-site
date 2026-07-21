@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore, collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, addDoc, updateDoc, doc } from 'firebase/firestore';
 
+// Cole as suas chaves reais do Firebase aqui em baixo:
 const firebaseConfig = {
   apiKey: "AIzaSyD5RfIf2MVkJiQc8z2kaA_kSjj64Wb07jQ",
   authDomain: "agencia-ia-db.firebaseapp.com",
@@ -11,26 +12,12 @@ const firebaseConfig = {
   messagingSenderId: "219764639000",
   appId: "1:219764639000:web:4b1032162dda0eb7a74a6d"
 };
-import React, { useState, useEffect } from 'react';
-import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore, collection, getDocs, addDoc, updateDoc, doc } from 'firebase/firestore';
-
-// Mantenha as suas chaves reais do Firebase aqui no topo:
-const firebaseConfig = {
-  apiKey: "SUA_API_KEY_REAL",
-  authDomain: "seu-projeto.firebaseapp.com",
-  projectId: "seu-projeto",
-  storageBucket: "seu-projeto.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "1:123456:web:abcd"
-};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-export default function AgenciaIAVisual() {
+export default function AgenciaIAPerfeita() {
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [email, setEmail] = useState('');
@@ -128,11 +115,9 @@ export default function AgenciaIAVisual() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-purple-500 selection:text-white relative overflow-hidden">
-      {/* Luzes de Fundo / Glow Neon */}
       <div className="absolute w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[140px] -top-32 -left-32 pointer-events-none animate-pulse"></div>
       <div className="absolute w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[140px] top-1/3 -right-32 pointer-events-none"></div>
 
-      {/* Barra de Navegação */}
       <nav className="flex justify-between items-center px-8 py-6 border-b border-slate-800/60 backdrop-blur-xl sticky top-0 z-50 bg-slate-950/70">
         <h1 className="text-2xl font-black tracking-wider bg-gradient-to-r from-purple-400 via-indigo-300 to-blue-500 bg-clip-text text-transparent">
           AGÊNCIA.AI
@@ -155,7 +140,6 @@ export default function AgenciaIAVisual() {
         </div>
       </nav>
 
-      {/* Hero Section com Visual Imersivo e Espaço 3D */}
       <header className="relative flex flex-col items-center justify-center text-center px-6 py-24">
         <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30 text-purple-300 text-xs font-semibold tracking-wider uppercase backdrop-blur-md">
           ✨ O Futuro do Web Design Chegou
@@ -165,11 +149,10 @@ export default function AgenciaIAVisual() {
           Websites gerados por <span className="bg-gradient-to-r from-purple-400 via-indigo-300 to-blue-500 bg-clip-text text-transparent">Inteligência Artificial</span>
         </h2>
         
-        <p className="text-lg md:text-xl text-slate-400 max-w-2xl mb-12 leading-relaxed">
+        <p className="text-base md:text-xl text-slate-400 max-w-2xl mb-12 leading-relaxed">
           Experiências visuais imersivas, design fora da caixa e performance extrema na velocidade que o seu negócio exige.
         </p>
 
-        {/* Bloco 3D / Preview Visual Interativo */}
         <div className="w-full max-w-4xl h-72 md:h-96 bg-slate-900/40 border border-slate-800/80 rounded-3xl backdrop-blur-2xl flex items-center justify-center relative shadow-2xl shadow-purple-950/50 mb-16 group hover:border-purple-500/50 transition duration-700">
           <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-transparent to-blue-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition duration-700"></div>
           <div className="text-center z-10">
@@ -184,10 +167,7 @@ export default function AgenciaIAVisual() {
         </div>
       </header>
 
-      {/* Seção de Contato/Orçamento e Acesso Unificados em Cards de Vidro */}
       <section className="px-6 py-12 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-        
-        {/* Formulário de Orçamento */}
         <div className="p-8 rounded-3xl bg-slate-900/40 border border-slate-800/80 backdrop-blur-xl shadow-2xl hover:border-purple-500/30 transition">
           <h3 className="text-2xl font-bold mb-2 text-purple-300">Solicitar Projeto com IA</h3>
           <p className="text-xs text-slate-400 mb-6">Conte-nos a sua ideia e deixe a inteligência artificial projetar.</p>
@@ -224,7 +204,6 @@ export default function AgenciaIAVisual() {
           {feedback && <p className="text-sm text-purple-400 mt-4 text-center font-medium">{feedback}</p>}
         </div>
 
-        {/* Acesso & Painel Admin / Cliente */}
         <div className="p-8 rounded-3xl bg-slate-900/40 border border-slate-800/80 backdrop-blur-xl shadow-2xl flex flex-col justify-between hover:border-blue-500/30 transition">
           <div>
             <h3 className="text-2xl font-bold mb-2 text-blue-300">Acesso à Plataforma</h3>
@@ -296,10 +275,8 @@ export default function AgenciaIAVisual() {
             )}
           </div>
         </div>
-
       </section>
 
-      {/* Seção de Portfólio Dinâmico */}
       <section className="px-6 py-16 max-w-6xl mx-auto mb-20">
         <h3 className="text-3xl font-bold mb-10 text-center bg-gradient-to-r from-slate-100 to-slate-400 bg-clip-text text-transparent">
           Nossos Trabalhos em Destaque
