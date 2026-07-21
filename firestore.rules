@@ -1,0 +1,40 @@
+rules_version = '2';
+
+// Copie este conteúdo em Firebase Console > Firestore Database > Regras,
+// ou faça deploy via Firebase CLI: firebase deploy --only firestore:rules
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Perfil do usuário (cliente ou admin)
+    match /users/{userId} {
+      allow read: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      // ninguém pode alterar o próprio "role" pelo app — promover a admin é manual, no Console
+      allow update: if isSignedIn() && request.auth.uid == userId &&
+        request.resource.data.role == resource.data.role;
+    }
+
+    // Leads do formulário público de contato — visitante não precisa estar logado
+    match /leads/{leadId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Pedidos criados por clientes autenticados
+    match /orders/{orderId} {
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow update, delete: if isAdmin();
+    }
+  }
+}

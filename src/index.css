@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: auto; /* o Lenis assume o controle do scroll suave */
+  }
+
+  body {
+    @apply bg-void text-ink font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-neon-purple/40 text-white;
+  }
+
+  /* Respeita usuários que preferem menos movimento */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-gradient-to-r from-neon-purple via-fuchsia-300 to-neon-blue bg-clip-text text-transparent;
+  }
+
+  .glass-card {
+    @apply relative rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-2xl;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-ink placeholder-white/30 outline-none transition-colors duration-300 focus:border-neon-purple/60 focus:bg-white/[0.06];
+  }
+}
