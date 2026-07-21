@@ -209,12 +209,11 @@ export default function AgenciaIAPerfeita() {
             </button>
           </form>
 
-          {feedback && (
-  <div className="mt-4 p-4 bg-purple-950/40 border border-purple-500/30 rounded-2xl text-purple-300 text-sm text-center backdrop-blur-md shadow-lg shadow-purple-950/50 animate-pulse">
+     {feedback && (
+  <div className="mt-4 p-4 bg-purple-950/50 border border-purple-500/40 rounded-2xl text-purple-300 text-sm text-center backdrop-blur-md shadow-lg shadow-purple-950/50">
     {feedback}
   </div>
 )}
-
         <div className="p-8 rounded-3xl bg-slate-900/40 border border-slate-800/80 backdrop-blur-xl shadow-2xl flex flex-col justify-between hover:border-blue-500/30 transition">
           <div>
             <h3 className="text-2xl font-bold mb-2 text-blue-300">Acesso à Plataforma</h3>
