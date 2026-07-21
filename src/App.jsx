@@ -78,8 +78,16 @@ export default function AgenciaIAPerfeita() {
         setFeedback('Login efetuado com sucesso!');
       }
     } catch (error) {
-      setFeedback('Erro: ' + error.message);
-    }
+  let mensagemAmigavel = "Ops! Ocorreu um erro. Verifique seus dados e tente novamente.";
+  if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
+    mensagemAmigavel = "E-mail ou senha incorretos.";
+  } else if (error.code === 'auth/email-already-in-use') {
+    mensagemAmigavel = "Este e-mail já está cadastrado.";
+  } else if (error.code === 'auth/weak-password') {
+    mensagemAmigavel = "A senha precisa ter pelo menos 6 caracteres.";
+  }
+  setFeedback(mensagemAmigavel);
+}
   };
 
   const handleLogout = () => {
