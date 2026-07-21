@@ -4,14 +4,13 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, si
 import { getFirestore, collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY || "SUA_API_KEY",
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN || "seu-projeto.firebaseapp.com",
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID || "seu-projeto",
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET || "seu-projeto.appspot.com",
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID || "123456789",
-  appId: process.env.REACT_APP_FIREBASE_APP_ID || "1:123456:web:abcd"
+  apiKey: "AIzaSyD5RfIf2MVkJiQc8z2kaA_kSjj64Wb07jQ",
+  authDomain: "agencia-ia-db.firebaseapp.com",
+  projectId: "agencia-ia-db",
+  storageBucket: "agencia-ia-db.firebasestorage.app",
+  messagingSenderId: "219764639000",
+  appId: "1:219764639000:web:4b1032162dda0eb7a74a6d"
 };
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
